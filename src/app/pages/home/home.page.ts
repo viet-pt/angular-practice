@@ -9,7 +9,8 @@ import { ConfirmModalComponent } from 'app/components';
 
 export class HomePage {
   closeResult: string = '';
-  name: any;
+  name1: any;
+  name2: any;
 
   constructor(private modalService: NgbModal) { }
 

@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { OnlyNumber, ClickOutside } from 'app/directives';
+import { RestrictSpecialChar } from './restrict-special-char.directive';
 
 @NgModule({
   declarations: [
     OnlyNumber,
     ClickOutside,
+    RestrictSpecialChar,
   ],
   imports: [
     CommonModule,
@@ -13,6 +15,7 @@ import { OnlyNumber, ClickOutside } from 'app/directives';
   exports: [
     OnlyNumber,
     ClickOutside,
+    RestrictSpecialChar,
   ]
 })
 

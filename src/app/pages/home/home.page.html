@@ -1,8 +1,16 @@
-<section class="container-fluid">
+<section class="container-fluid home">
   <button (click)="onOpenModal()">
     Open Modal
   </button>
 
-  <h1 onlyNumber>ABC</h1>
-  <input type="text" onlyNumber [(ngModel)]="name" >
+  <div>
+    <p>Only Number</p>
+    <input type="text" onlyNumber [(ngModel)]="name1" >
+  </div>
+
+  <div class="mt-3">
+    <p>Restrict special characters</p>
+    <input type="text" restrictSpecialChar [(ngModel)]="name2" >
+  </div>
+
 </section>

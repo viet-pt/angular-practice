@@ -1,23 +1,28 @@
 import { Directive, ElementRef, HostListener } from '@angular/core';
 
 @Directive({
-  selector: '[onlyNumber]'
+  selector: '[restrictSpecialChar]'
 })
-export class OnlyNumber {
+
+export class RestrictSpecialChar {
 
   constructor(private el: ElementRef) { }
+
+  omit_special_char(keyCode: any) {
+    return (keyCode > 64 && keyCode < 91) || (keyCode > 96 && keyCode < 123) || keyCode == 8 || keyCode == 32
+      || (keyCode >= 48 && keyCode <= 57);
+  }
 
   @HostListener('keydown', ['$event']) onKeyDown(event: any) {
     let e = <KeyboardEvent>event;
     const { keyCode, ctrlKey, metaKey, shiftKey } = e;
-
-    if ([46, 8, 9, 27, 13, 110].indexOf(keyCode) !== -1 ||
+    if (
       // Allow: Ctrl+A
       (keyCode === 65 && (ctrlKey || metaKey)) ||
       // Allow: Ctrl+C
       (keyCode === 67 && (ctrlKey || metaKey)) ||
       // Allow: Ctrl+V
-      (keyCode === 86 && (ctrlKey || metaKey)) ||
+      // (keyCode === 86 && (ctrlKey || metaKey)) ||
       // Allow: Ctrl+X
       (keyCode === 88 && (ctrlKey || metaKey)) ||
       // Allow: home, end, left, right
@@ -25,9 +30,10 @@ export class OnlyNumber {
       // let it happen, don't do anything
       return;
     }
-    // Ensure that it is a number and stop the keypress
-    if ((shiftKey || (keyCode < 48 || keyCode > 57)) && (keyCode < 96 || keyCode > 105)) {
+
+    if (!this.omit_special_char(keyCode) || shiftKey) {
       e.preventDefault();
     }
   }
+
 }
