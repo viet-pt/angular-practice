@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmModalComponent } from 'app/components';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { ChangeEvent } from '@ckeditor/ckeditor5-angular';
 
 @Component({
   templateUrl: './home.page.html',
@@ -8,9 +10,13 @@ import { ConfirmModalComponent } from 'app/components';
 })
 
 export class HomePage {
-  closeResult: string = '';
-  name1: any;
-  name2: any;
+  public closeResult: string = '';
+  public name1: any;
+  public name2: any;
+  public Editor = ClassicEditor;
+  public config = {
+    toolbar: ['heading', '|', 'bold', 'italic']
+  };
 
   constructor(private modalService: NgbModal) { }
 
@@ -26,6 +32,11 @@ export class HomePage {
 
   onChangeInput(e: any): void {
     console.log(e.target.value);
+  }
+
+  onChangeEditor({ editor }: ChangeEvent): void {
+    const data = editor.getData();
+    // console.log(data);
   }
 
 }

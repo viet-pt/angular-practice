@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DirectivesModule } from 'app/directives/directives.module';
 import { HomePage } from './home.page';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forChild(routes),
     DirectivesModule,
+    CKEditorModule,
   ],
 })
 export class HomeModule {}

@@ -5,12 +5,18 @@
 
   <div>
     <p>Only Number</p>
-    <input type="text" onlyNumber [(ngModel)]="name1" >
+    <input type="text" onlyNumber [(ngModel)]="name1">
   </div>
 
   <div class="mt-3">
     <p>Restrict special characters</p>
-    <input type="text" restrictSpecialChar [(ngModel)]="name2" >
+    <input type="text" restrictSpecialChar [(ngModel)]="name2">
+  </div>
+
+  <div class="mt-4">
+    <ckeditor [editor]="Editor" id="test1"
+      (change)="onChangeEditor($event)" [maxlengthCkeditor]="5">
+    </ckeditor>
   </div>
 
 </section>

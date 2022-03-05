@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { OnlyNumber, ClickOutside } from 'app/directives';
+import { OnlyNumber, ClickOutside, MaxlengthCkeditor } from 'app/directives';
 import { RestrictSpecialChar } from './restrict-special-char.directive';
 
 @NgModule({
@@ -8,6 +8,7 @@ import { RestrictSpecialChar } from './restrict-special-char.directive';
     OnlyNumber,
     ClickOutside,
     RestrictSpecialChar,
+    MaxlengthCkeditor,
   ],
   imports: [
     CommonModule,
@@ -16,6 +17,7 @@ import { RestrictSpecialChar } from './restrict-special-char.directive';
     OnlyNumber,
     ClickOutside,
     RestrictSpecialChar,
+    MaxlengthCkeditor
   ]
 })
 
