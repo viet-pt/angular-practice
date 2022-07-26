@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmModalComponent } from 'app/components';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { ChangeEvent } from '@ckeditor/ckeditor5-angular';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   templateUrl: './home.page.html',
@@ -18,14 +19,20 @@ export class HomePage {
     toolbar: ['heading', '|', 'bold', 'italic']
   };
 
-  constructor(private modalService: NgbModal) { }
+  myForm = new FormGroup({
+    name: new FormControl('', Validators.required),
+    country: new FormControl('vi', Validators.required),
+  });
+  sourceControl = new FormControl("vi");
+
+  constructor(
+    private modalService: NgbModal,
+  ) { }
 
   onOpenModal(): void {
     this.modalService.open(ConfirmModalComponent, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-      console.log('success')
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
-      console.log('failure')
       this.closeResult = 'Dismissed';
     });
   }
@@ -36,7 +43,10 @@ export class HomePage {
 
   onChangeEditor({ editor }: ChangeEvent): void {
     const data = editor.getData();
-    // console.log(data);
+  }
+
+  onSubmit(value: any): void {
+    console.log(11111, value)
   }
 
 }

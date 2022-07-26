@@ -14,9 +14,20 @@
   </div>
 
   <div class="mt-4">
-    <ckeditor [editor]="Editor" id="test1"
-      (change)="onChangeEditor($event)" [maxlengthCkeditor]="5">
+    <ckeditor [editor]="Editor" id="test1" (change)="onChangeEditor($event)" [maxlengthCkeditor]="5">
     </ckeditor>
   </div>
+
+  <form autocomplete="off" [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
+    <div class="form-group mt-5">
+      <input placeholder="Nhập tên" formControlName="name" class="form-control">
+      <p *ngIf="!myForm.get('name')?.valid" class="text-danger">Tên không được để trống</p>
+    </div>
+
+    <input-dropdown formControlName='country'></input-dropdown>
+    
+    <button class="mt-3" type="submit">Submit</button>
+
+  </form>
 
 </section>

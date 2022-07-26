@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { WebShellModule } from './utils/web-shell.module';
 import { DirectivesModule } from './directives/directives.module';
 import { ComponentsModule } from './components/component.module';
+import { PipeModule } from './pipe/pipe.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { ComponentsModule } from './components/component.module';
     WebShellModule,
     ComponentsModule,
     DirectivesModule,
+    PipeModule,
   ],
   bootstrap: [AppComponent]
 })
